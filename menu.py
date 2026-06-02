@@ -56,15 +56,20 @@ def ejecutar_sistema() -> None:
             programa_activo = False # Al cambiar la bandera, el bucle frena naturalmente
             
         elif bandera_usuario == True:         # Solo si ya se cargó la contraseña
+            
             if opcion == 2:
                 formato = validar_formato(usuario)
                 print("\n--- REPORTE FORMATO ---")
                 print(f"{formato}")
+            
             elif opcion == 3:
+                print("\n--- REPORTE DE CARACTERES ---")
                 mostrar_cantidad_caracteres(usuario)
-        #     elif opcion == 4:
-        #         caracter = pedir_caracter()
-        #         buscar_caracter(usuario, caracter)
+
+            elif opcion == 4:
+                caracter = pedir_caracter()
+                print("\n--- REPORTE COINCIDENCIAS DE CARACTERES ---")
+                buscar_caracter(usuario, caracter)
         #     elif opcion == 5:
         #         invertida = invertir_cadena(usuario)
         #         print(f"Original: {usuario}\nInvertida: {invertida}")
