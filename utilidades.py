@@ -1,8 +1,11 @@
 from analisis import (
     contar_tipo_caracteres,
     calcular_longitud,
+    verificar_simetria,
+    ordenar_usuario,
     calcular_porcentaje
 )
+from validaciones import pedir_criterio_orden
 
 # 3)  Contar tipos de caracteres
 #Mostrar: cantidad de letras, cantidad de números, cantidad de guiones bajos, cantidad de puntos.  
@@ -26,7 +29,6 @@ def mostrar_cantidad_caracteres(cadena:str) -> None:
 # 6) Generar reporte estadístico 
 # Cantidad de caracteres repetidos consecutivos.
 # Recorre la cadena comparando cada carácter con el siguiente e informa las repeticiones consecutivas encontradas. Cada bloque repetido se muestra una única vez.
-
 def mostrar_consecutivos_repetidos(cadena: str) -> None:
     """Muestra los caracteres que se repiten de forma consecutiva en una cadena.
 
@@ -64,3 +66,38 @@ def mostrar_reporte(cadena:str) -> None:
     print(f"Porcentaje símbolos: {porcentaje_simbolos}%")
     print(f"Cantidad de caracteres repetidos consecutivos:")
     mostrar_consecutivos_repetidos(cadena)
+
+#-----------------------
+#7 Verificar si el usuario es simétrico
+def mostrar_reporte_simetria(cadena: str) -> None:
+    """Muestra en pantalla si el nombre de usuario es simétrico o no.
+
+    Args:
+        cadena (str): Cadena a analizar.
+    """
+
+    print("\n--- VERIFICAR SIMETRÍA ---")
+
+    usuario_simetrico = verificar_simetria(cadena)
+    
+    if usuario_simetrico == True: 
+        print(f"El usuario '{cadena}' ES simétrico. ¡Su primera mitad es igual a la segunda!")
+    else:
+        print(f"El usuario '{cadena}' NO es simétrico.")
+
+#------------------------
+# 8)Ordenar caracteres del usuario
+def mostrar_reporte_ordenamiento(cadena: str) -> None:
+    """Muestra el proceso y resultado de ordenar los caracteres del usuario.
+
+    Args:
+        cadena (str): Cadena a ordenar.
+    """
+    print("\n--- ORDENAR CARACTERES ---")
+        
+    criterio = pedir_criterio_orden() # Pedimos y validamos el criterio (ascendente/descendente)
+        
+    usuario_ordenado = ordenar_usuario(cadena, criterio) # Ejecutamos el algoritmo de ordenamiento manual
+    
+    print(f"Usuario original: {cadena}")                
+    print(f"Usuario ordenado ({criterio}): {usuario_ordenado}")
