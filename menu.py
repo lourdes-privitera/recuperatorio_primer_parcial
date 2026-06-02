@@ -6,7 +6,7 @@ from validaciones import (
 
 from utilidades import (
     mostrar_cantidad_caracteres,
-    calcular_porcentaje
+    mostrar_reporte
 )
 
 from analisis import (
@@ -14,9 +14,9 @@ from analisis import (
     buscar_caracter,
     espejar_cadena,
     verificar_palindromo,
-    ordenar_usuario,
-    reporte_estadistico
+    ordenar_usuario
 )
+
 #El programa deberá mostrar el siguiente menú: 
 def mostrar_menu():
     print("")  
@@ -70,13 +70,14 @@ def ejecutar_sistema() -> None:
                 caracter = pedir_caracter()
                 print("\n--- REPORTE COINCIDENCIAS DE CARACTERES ---")
                 buscar_caracter(usuario, caracter)
-                
+
             elif opcion == 5:
                 usuario_espejada = espejar_cadena(usuario)
                 print("\n--- REPORTE USUARIO ESPEJADO  ---")
                 print(f"Usuario {usuario}\nResultado: {usuario_espejada}")
-        #     elif opcion == 6:
-        #         generar_reporte_estadistico(usuario) # Llamamos al nuevo archivo
+
+            elif opcion == 6:
+                mostrar_reporte(usuario) 
         #     elif opcion == 7:
         #         if verificar_palindromo(usuario):
         #             print("Es palindromo")
