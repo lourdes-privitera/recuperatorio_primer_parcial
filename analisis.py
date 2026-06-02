@@ -83,3 +83,26 @@ def buscar_caracter(cadena: str, caracter: str) -> None:
     else:
         print(f"El carácter '{caracter}' no se encuentra en el nombre de usuario.")
 
+#------------------------
+# 5) Mostrar usuario espejado
+#Recorro la cadena mediante índices para poder acceder a cada posición. 
+#Después creo una nueva cadena agregando los caracteres en orden inverso al original.
+#Para finalizar hago una nueva cadena agregando la cadena invertida y la cacdena original
+def espejar_cadena(cadena:str) -> str:
+    """Función que recorre la cadena desde el último índice hasta el primero,
+    construyendo una nueva cadena en orden inverso para devolver la suma de la cadena invertida y la cadena original
+    Args:
+        cadena (str): cadena original a espejar.
+
+    Returns:
+        str: cadena con los caracteres en orden inverso.
+    """
+    cadena_invertida = ""
+
+    for i in range (len(cadena)-1,-1,-1): #empieza en el último indice, termina en 0 (no se incluye) y va para atras
+        cadena_invertida += cadena[i]
+    cadena_espejo = cadena_invertida + cadena
+
+    return cadena_espejo
+
+
