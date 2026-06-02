@@ -13,7 +13,6 @@ def mostrar_cantidad_caracteres(cadena:str) -> None:
     cantidad_guiones = contar_tipo_caracteres(cadena,"guion_bajo")
     cantidad_puntos = contar_tipo_caracteres(cadena,"punto")
 
-    print("\n--- REPORTE DE CARACTERES ---")
     print(f"Cantidad de letras: {cantidad_letras}")
     print(f"Cantidad de números: {cantidad_numeros}")
     print(f"Cantidad de guiones: {cantidad_guiones}")
