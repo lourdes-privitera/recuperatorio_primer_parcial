@@ -1,6 +1,7 @@
 from validaciones import (
     validar_entero,
     ingresar_usuario,
+    pedir_criterio_orden,
     validar_formato
 )
 
@@ -83,13 +84,14 @@ def ejecutar_sistema() -> None:
         #             print("Es palindromo")
         #         else:
         #             print("NO es palindromo")
-        #     elif opcion == 8:
-        #         # Idealmente esto debería ser una función en analisis.py: pedir_orden()
-        #         orden = input("Ingrese tipo de orden (ascendente/descendente): ")
-        #         while orden != "ascendente" and orden != "descendente":
-        #             orden = input("Reingrese ascendente o descendente: ")
-        #         ordenada = ordenar_usuario(usuario, orden)
-        #         print(f"Ordenada: {ordenada}")
+            elif opcion == 8:
+                print("\n--- ORDENAR CARACTERES ---")
+                
+                criterio = pedir_criterio_orden()
+                usuario_ordenado = ordenar_usuario(usuario, criterio)
+
+                print(f"Usuario original: {usuario}")                
+                print(f"Usuario ordenado ({criterio}): {usuario_ordenado}")
         else:
             print(f"¡¡¡NO SE PUEDE ACCEDER A LA OPCION {opcion} SIN CARGAR LA usuario!!!")
             
