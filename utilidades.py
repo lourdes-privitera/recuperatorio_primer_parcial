@@ -22,8 +22,8 @@ def mostrar_cantidad_caracteres(cadena:str) -> None:
     print(f"Cantidad de guiones: {cantidad_guiones}")
     print(f"Cantidad de puntos: {cantidad_puntos}")
 
+#------------------------
 # 6) Generar reporte estadístico 
-
 # Cantidad de caracteres repetidos consecutivos.
 # Recorre la cadena comparando cada carácter con el siguiente e informa las repeticiones consecutivas encontradas. Cada bloque repetido se muestra una única vez.
 
@@ -37,7 +37,6 @@ def mostrar_consecutivos_repetidos(cadena: str) -> None:
         if cadena[i] == cadena[i+1]:                                    
             if i == 0 or cadena[i] != cadena[i-1]:   
                 print(f" - 1 repetición de {cadena[i]}")
-
 
 def mostrar_reporte(cadena:str) -> None:
     """_summary_
