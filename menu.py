@@ -1,7 +1,7 @@
 from validaciones import (
     validar_entero,
     ingresar_usuario,
-    validar_nivel_seguridad
+    validar_formato
 )
 
 from utilidades import (
@@ -36,13 +36,14 @@ def ejecutar_sistema() -> None:
     programa_activo = True  
 
     while programa_activo:
+
         mostrar_menu()
+
         opcion_texto = input("Seleccionar opcion: ")
         
-        # Validamos el rango de enteros sin romper el ciclo
-        while not validar_entero(opcion_texto, 1, 9):
+        while validar_entero(opcion_texto, 1, 9) == False:
             opcion_texto = input("Reingrese una opcion valida: ")
-
+            
         opcion = int(opcion_texto)
             
         if opcion == 1:
@@ -54,11 +55,10 @@ def ejecutar_sistema() -> None:
             print("SALIENDO...")
             programa_activo = False # Al cambiar la bandera, el bucle frena naturalmente
             
-        # # Bloque de opciones seguras (Solo si ya se cargó la contraseña)
-        # elif bandera_usuario:
-        #     if opcion == 2:
-        #         nivel = validar_nivel_seguridad(usuario)
-        #         print(f"Nivel de seguridad: {nivel}")
+        elif bandera_usuario == True:         # Solo si ya se cargó la contraseña
+            if opcion == 2:
+                formato = validar_formato(usuario)
+                print(f"Formato de usuario: {formato}")
         #     elif opcion == 3:
         #         mostrar_cantidad_caracteres(usuario)
         #     elif opcion == 4:
