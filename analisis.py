@@ -119,7 +119,6 @@ def calcular_longitud(cadena:str) -> int:
     """
     longitud_total = len(cadena)
     return longitud_total
-
 # Porcentaje de letras, numeros y simbolos
 def calcular_porcentaje(cantidad: int, total: int) -> float:
     """Calcula el porcentaje que representa una cantidad respecto a un total.
@@ -134,4 +133,40 @@ def calcular_porcentaje(cantidad: int, total: int) -> float:
     porcentaje = (cantidad / total) * 100
     return porcentaje
 
+#------------------------
+# 8)Ordenar caracteres de la contraseña 
+#Utilizo un algoritmo de ordenamiento manual por comparación e intercambio de elementos.  (Selection Sort)
+#comparo con todo a la derecha o izquierda
 
+def ordenar_usuario(cadena: str, orden: str) -> str:
+    """Ordena los caracteres de un usuario de forma ascendente o descendente
+    utilizando un algoritmo de ordenamiento manual basado en comparación ASCII.
+
+    Args:
+        cadena (str): usuario original a ordenar.
+        orden (str): criterio de ordenamiento ("ascendente" o "descendente").
+
+    Returns:
+        str: usuario con caracteres ordenados según el criterio indicado.
+    """
+
+    lista = []
+
+    
+    for i in range(len(cadena)): # Convertir string a lista manualmente
+        lista += cadena[i]
+
+    
+    for izq in range(len(lista) - 1): 
+        for der in range(izq + 1, len(lista)):         
+            
+            if (orden == "ascendente" and lista[izq] > lista[der]) or (orden == "descendente" and lista[izq] < lista[der]): #Evaluamos si cumple la condición para ASCENDENTE o para DESCENDENTE
+                aux = lista[izq]        
+                lista[izq] = lista[der]  
+                lista[der] = aux
+
+    resultado = "" 
+    for i in range(len(lista)):
+        resultado += lista[i] 
+
+    return resultado
