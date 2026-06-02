@@ -43,7 +43,7 @@ def ejecutar_sistema() -> None:
         
         while validar_entero(opcion_texto, 1, 9) == False:
             opcion_texto = input("Reingrese una opcion valida: ")
-            
+
         opcion = int(opcion_texto)
             
         if opcion == 1:
@@ -58,9 +58,10 @@ def ejecutar_sistema() -> None:
         elif bandera_usuario == True:         # Solo si ya se cargó la contraseña
             if opcion == 2:
                 formato = validar_formato(usuario)
-                print(f"Formato de usuario: {formato}")
-        #     elif opcion == 3:
-        #         mostrar_cantidad_caracteres(usuario)
+                print("\n--- REPORTE FORMATO ---")
+                print(f"{formato}")
+            elif opcion == 3:
+                mostrar_cantidad_caracteres(usuario)
         #     elif opcion == 4:
         #         caracter = pedir_caracter()
         #         buscar_caracter(usuario, caracter)
