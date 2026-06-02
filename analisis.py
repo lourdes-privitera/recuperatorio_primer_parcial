@@ -1,4 +1,24 @@
-from validaciones import validar_tipo_caracteres
+
+# Solo puede contener: letras, números, guion bajo _, punto .
+def validar_tipo_caracteres(cadena:str) -> bool:
+    """ Valida que una cadena contenga caracteres especificos.
+
+    Args:
+        cadena (str): Cadena a analizar.
+
+    Returns:
+        bool: True si cumple con los caracteres especificados, False si no cumple
+    """
+    
+    caracteres = True
+
+    for caracter in cadena:
+        codigo_ascii = ord(caracter)
+# No es letra mayúscula Y No es letra minúscula Y No es número Y No es guion bajo Y No es un punto
+        if ((codigo_ascii < 65 or codigo_ascii > 90) and (codigo_ascii < 97 or codigo_ascii > 122) and (codigo_ascii < 48 or codigo_ascii > 57) and (codigo_ascii != 95) and (codigo_ascii != 46)):
+            caracteres = False 
+
+    return caracteres
 
 #2) para identificar formato segun cantidad de caracteres en analisis
 def contar_tipo_caracteres(cadena:str,tipo:str) -> int:

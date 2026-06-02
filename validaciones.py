@@ -1,4 +1,4 @@
-from analisis import contar_tipo_caracteres
+from analisis import contar_tipo_caracteres, validar_tipo_caracteres
 #valida la opcion elegida para que no falle el programa
 def validar_entero(texto: str, valor_minimo:int, valor_maximo:int) -> bool:
     """Valida si un texto representa un número entero dentro de un rango.
@@ -153,26 +153,6 @@ def validar_letra(cadena:str) -> bool:
             bandera_letra = True
 
     return bandera_letra
-# Solo puede contener: letras, números, guion bajo _, punto .
-def validar_tipo_caracteres(cadena:str) -> bool:
-    """ Valida que una cadena contenga caracteres especificos.
-
-    Args:
-        cadena (str): Cadena a analizar.
-
-    Returns:
-        bool: True si cumple con los caracteres especificados, False si no cumple
-    """
-    
-    caracteres = True
-
-    for caracter in cadena:
-        codigo_ascii = ord(caracter)
-# No es letra mayúscula Y No es letra minúscula Y No es número Y No es guion bajo Y No es un punto
-        if ((codigo_ascii < 65 or codigo_ascii > 90) and (codigo_ascii < 97 or codigo_ascii > 122) and (codigo_ascii < 48 or codigo_ascii > 57) and (codigo_ascii != 95) and (codigo_ascii != 46)):
-            caracteres = False 
-
-    return caracteres
 
 #------------------------
 # 2) Validar formato del usuario 
