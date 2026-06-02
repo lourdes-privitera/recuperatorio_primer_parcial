@@ -12,7 +12,7 @@ from utilidades import (
 from analisis import (
     pedir_caracter,
     buscar_caracter,
-    invertir_cadena,
+    espejar_cadena,
     verificar_palindromo,
     ordenar_usuario,
     reporte_estadistico
@@ -70,9 +70,11 @@ def ejecutar_sistema() -> None:
                 caracter = pedir_caracter()
                 print("\n--- REPORTE COINCIDENCIAS DE CARACTERES ---")
                 buscar_caracter(usuario, caracter)
-        #     elif opcion == 5:
-        #         invertida = invertir_cadena(usuario)
-        #         print(f"Original: {usuario}\nInvertida: {invertida}")
+                
+            elif opcion == 5:
+                usuario_espejada = espejar_cadena(usuario)
+                print("\n--- REPORTE USUARIO ESPEJADO  ---")
+                print(f"Usuario {usuario}\nResultado: {usuario_espejada}")
         #     elif opcion == 6:
         #         generar_reporte_estadistico(usuario) # Llamamos al nuevo archivo
         #     elif opcion == 7:
