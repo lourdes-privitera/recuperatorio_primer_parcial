@@ -1,4 +1,4 @@
-
+from analisis import contar_tipo_caracteres
 #valida la opcion elegida para que no falle el programa
 def validar_entero(texto: str, valor_minimo:int, valor_maximo:int) -> bool:
     """Valida si un texto representa un número entero dentro de un rango.
@@ -175,37 +175,9 @@ def validar_tipo_caracteres(cadena:str) -> bool:
     return caracteres
 
 #------------------------
-# 2)
-def contar_tipo_caracteres(cadena:str,tipo:str) -> int:
-    """Cuenta la cantidad de caracteres de un tipo específico dentro de una cadena.
-
-    Args:
-        cadena (str): Cadena a analizar.
-        tipo (str): Tipo de carácter a contar (letra/numero/simbolo).
-
-    Returns:
-        int: Cantidad de caracteres encontrados del tipo indicado.
-    """
-
-    contador_caracteres = 0
-
-    for caracter in cadena:
-        codigo_ascii = ord(caracter)
-
-        if tipo == "letra":
-            if (65 <= codigo_ascii <= 90) or (97 <= codigo_ascii <= 122):
-                contador_caracteres += 1
-
-        elif tipo == "numero":
-            if (48 <= codigo_ascii <= 57):
-                contador_caracteres += 1
-
-        elif tipo == "simbolo":
-            if codigo_ascii == 95 or codigo_ascii == 46 :
-                contador_caracteres += 1
-
-    return contador_caracteres
-
+# 2) Validar formato del usuario 
+#para identificar formato segun cantidad de caracteres en analisis
+#para identificar formato validando el final de la cadena
 def validar_final(cadena:str) -> bool:
     """Valida que la cadena no termine con simbolos.
 
@@ -223,7 +195,7 @@ def validar_final(cadena:str) -> bool:
         bandera_fin = True
 
     return bandera_fin
-
+#comparacion de condiciones para validar formato
 def validar_formato(cadena:str) -> str:
     """Determina el FORMATO DE UN NOMBRE DE USUARIO analizando la longitud de la cadena y la cantidad
     de letras, números y símbolos presentes.
@@ -237,7 +209,7 @@ def validar_formato(cadena:str) -> str:
 
     cantidad_letras = contar_tipo_caracteres(cadena,"letra")
     cantidad_numeros = contar_tipo_caracteres(cadena,"numero")
-    cantidad_simbolos = contar_tipo_caracteres(cadena,"simbolo")
+    cantidad_simbolos = contar_tipo_caracteres(cadena,"guion_bajo") + contar_tipo_caracteres(cadena, "punto")
     fin_validado = validar_final(cadena)
 
 #letras, números, símbolos permitidos (_ y .), al menos 12 caracteres, no debe terminar en símbolo. 
