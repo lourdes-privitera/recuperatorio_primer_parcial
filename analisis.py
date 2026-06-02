@@ -1,4 +1,5 @@
 from validaciones import validar_tipo_caracteres
+
 #2) para identificar formato segun cantidad de caracteres en analisis
 def contar_tipo_caracteres(cadena:str,tipo:str) -> int:
     """Cuenta la cantidad de caracteres de un tipo especifico PASADO POR PARAMETRO dentro de una cadena.
@@ -61,7 +62,6 @@ def pedir_caracter() -> str:
 
 # Recorro la cadena con un índice para poder conocer cada posición. 
 # Comparo cada carácter con el buscado, si coincide incremento un contador y registro la posición donde ocurrió.
-
 def buscar_caracter(cadena: str, caracter: str) -> None:
     """Busca un carácter dentro de una cadena y muestra cuántas veces aparece
     junto con las posiciones en las que se encuentra.
@@ -104,5 +104,34 @@ def espejar_cadena(cadena:str) -> str:
     cadena_espejo = cadena_invertida + cadena
 
     return cadena_espejo
+
+#------------------------
+# 6) Generar reporte estadístico 
+# Longitud total
+def calcular_longitud(cadena:str) -> int:
+    """Calcula la longitud de una cadena pasada por parametro con len.
+
+    Args:
+        cadena (str): Cadena a analizar.
+
+    Returns:
+        int: Longitud calculada.
+    """
+    longitud_total = len(cadena)
+    return longitud_total
+
+# Porcentaje de letras, numeros y simbolos
+def calcular_porcentaje(cantidad: int, total: int) -> float:
+    """Calcula el porcentaje que representa una cantidad respecto a un total.
+
+    Args:
+        cantidad (int): Valor sobre el que se calculará el porcentaje.
+        total (int): Valor total de referencia.
+
+    Returns:
+        float: Porcentaje calculado.
+    """
+    porcentaje = (cantidad / total) * 100
+    return porcentaje
 
 
