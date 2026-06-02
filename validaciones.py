@@ -30,8 +30,8 @@ def validar_entero(texto: str, valor_minimo:int, valor_maximo:int) -> bool:
         print("ERROR: se debe ingresar un número entero.")
 
     return retorno
-#------------------------
 
+#------------------------
 # 1) Permitir ingresar un nombre de usuario.
 def ingresar_usuario() -> str:
     """Solicita y valida el ingreso de un nombre de usuario.
@@ -228,3 +228,19 @@ def validar_formato(cadena:str) -> str:
         formato = "SIN CATEGORIA" #para que no rompa el programa nunca
 
     return formato
+
+#------------------------
+# 8)Ordenar caracteres de la contraseña 
+#El usuario deberá poder elegir:  Orden ascendente/ Orden descendente
+def pedir_criterio_orden() -> str:
+    """Pide al usuario el tipo de ordenamiento y lo valida.
+
+    Returns:
+        str: El criterio válido ("ascendente" o "descendente").
+    """
+    criterio = input("Ingrese el orden deseado (ascendente / descendente): ")
+    
+    while criterio != "ascendente" and criterio != "descendente":
+        criterio = input("ERROR. Ingrese una opción válida (ascendente / descendente): ")
+        
+    return criterio
