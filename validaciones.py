@@ -230,7 +230,7 @@ def validar_formato(cadena:str) -> str:
     return formato
 
 #------------------------
-# 8)Ordenar caracteres de la contraseña 
+# 8) Ordenar caracteres del usuario 
 #El usuario deberá poder elegir:  Orden ascendente/ Orden descendente
 def pedir_criterio_orden() -> str:
     """Pide al usuario el tipo de ordenamiento y lo valida.
