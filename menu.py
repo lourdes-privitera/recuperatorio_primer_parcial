@@ -1,21 +1,20 @@
 from validaciones import (
     validar_entero,
     ingresar_usuario,
-    pedir_criterio_orden,
     validar_formato
 )
 
 from utilidades import (
     mostrar_cantidad_caracteres,
-    mostrar_reporte
+    mostrar_reporte,
+    mostrar_reporte_simetria,
+    mostrar_reporte_ordenamiento
 )
 
 from analisis import (
     pedir_caracter,
     buscar_caracter,
-    espejar_cadena,
-    verificar_palindromo,
-    ordenar_usuario
+    espejar_cadena
 )
 
 #El programa deberá mostrar el siguiente menú: 
@@ -54,9 +53,9 @@ def ejecutar_sistema() -> None:
             
         elif opcion == 9:
             print("SALIENDO...")
-            programa_activo = False # Al cambiar la bandera, el bucle frena naturalmente
+            programa_activo = False 
             
-        elif bandera_usuario == True:         # Solo si ya se cargó la contraseña
+        elif bandera_usuario == True:         # Solo si ya se cargó el nombre de usuario
             
             if opcion == 2:
                 formato = validar_formato(usuario)
@@ -79,21 +78,14 @@ def ejecutar_sistema() -> None:
 
             elif opcion == 6:
                 mostrar_reporte(usuario) 
-        #     elif opcion == 7:
-        #         if verificar_palindromo(usuario):
-        #             print("Es palindromo")
-        #         else:
-        #             print("NO es palindromo")
-            elif opcion == 8:
-                print("\n--- ORDENAR CARACTERES ---")
-                
-                criterio = pedir_criterio_orden()
-                usuario_ordenado = ordenar_usuario(usuario, criterio)
 
-                print(f"Usuario original: {usuario}")                
-                print(f"Usuario ordenado ({criterio}): {usuario_ordenado}")
+            elif opcion == 7:
+                mostrar_reporte_simetria(usuario)
+
+            elif opcion == 8:
+                mostrar_reporte_ordenamiento(usuario)
         else:
-            print(f"¡¡¡NO SE PUEDE ACCEDER A LA OPCION {opcion} SIN CARGAR LA usuario!!!")
+            print(f"¡¡¡NO SE PUEDE ACCEDER A LA OPCION {opcion} SIN CARGAR EL USUARIO!!!")
             
         if programa_activo:
             input("\nPresione Enter para continuar...")
