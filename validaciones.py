@@ -107,7 +107,7 @@ def validar_inicio(cadena:str) -> bool:
     primer_caracter = cadena[0]
     codigo_ascii = ord(primer_caracter)
 
-    if not ( 48 <= codigo_ascii <= 57):
+    if codigo_ascii < 48 or codigo_ascii > 57: # Si es menor a 48 o mayor a 57, aseguramos que NO es un número
         bandera_inicio = True
 
     return bandera_inicio
@@ -155,6 +155,14 @@ def validar_letra(cadena:str) -> bool:
     return bandera_letra
 # Solo puede contener: letras, números, guion bajo _, punto .
 def validar_tipo_caracteres(cadena:str) -> bool:
+    """ Valida que una cadena contenga caracteres especificos.
+
+    Args:
+        cadena (str): Cadena a analizar.
+
+    Returns:
+        bool: True si cumple con los caracteres especificados, False si no cumple
+    """
     
     caracteres = True
 
@@ -168,3 +176,83 @@ def validar_tipo_caracteres(cadena:str) -> bool:
 
 #------------------------
 # 2)
+def contar_tipo_caracteres(cadena:str,tipo:str) -> int:
+    """Cuenta la cantidad de caracteres de un tipo específico dentro de una cadena.
+
+    Args:
+        cadena (str): Cadena a analizar.
+        tipo (str): Tipo de carácter a contar (letra/numero/simbolo).
+
+    Returns:
+        int: Cantidad de caracteres encontrados del tipo indicado.
+    """
+
+    contador_caracteres = 0
+
+    for caracter in cadena:
+        codigo_ascii = ord(caracter)
+
+        if tipo == "letra":
+            if (65 <= codigo_ascii <= 90) or (97 <= codigo_ascii <= 122):
+                contador_caracteres += 1
+
+        elif tipo == "numero":
+            if (48 <= codigo_ascii <= 57):
+                contador_caracteres += 1
+
+        elif tipo == "simbolo":
+            if codigo_ascii == 95 or codigo_ascii == 46 :
+                contador_caracteres += 1
+
+    return contador_caracteres
+
+def validar_final(cadena:str) -> bool:
+    """Valida que la cadena no termine con simbolos.
+
+    Args:
+        cadena (str): Cadena a validar.
+
+    Returns:
+        bool: True si NO comienza con números.
+    """
+    bandera_fin = False
+    primer_caracter = cadena[-1]
+    codigo_ascii = ord(primer_caracter)
+
+    if codigo_ascii != 46 and codigo_ascii != 95: # Si no es 46 o 95, aseguramos que NO es simbolo
+        bandera_fin = True
+
+    return bandera_fin
+
+def validar_formato(cadena:str) -> str:
+    """Determina el FORMATO DE UN NOMBRE DE USUARIO analizando la longitud de la cadena y la cantidad
+    de letras, números y símbolos presentes.
+
+    Args:
+        cadena (str): Nombre de usuario a analizar.
+
+    Returns:
+        str: Formato detectado.
+    """
+
+    cantidad_letras = contar_tipo_caracteres(cadena,"letra")
+    cantidad_numeros = contar_tipo_caracteres(cadena,"numero")
+    cantidad_simbolos = contar_tipo_caracteres(cadena,"simbolo")
+    fin_validado = validar_final(cadena)
+
+#letras, números, símbolos permitidos (_ y .), al menos 12 caracteres, no debe terminar en símbolo. 
+    if len(cadena) >= 12 and cantidad_letras >= 1 and cantidad_numeros >= 1 and cantidad_simbolos >= 1 and fin_validado == True:
+        formato = "Avanzado"
+
+#letras y números, al menos 8 caracteres y no contiene símbolos. 
+    elif len(cadena) >= 8 and cantidad_letras >= 1 and cantidad_numeros >= 1 and cantidad_simbolos == 0:
+        formato = "Intermedio"
+
+#solo contiene letras, y longitud entre 6 y 8 caracteres. 
+    elif (6 <= len(cadena) <= 8) and cantidad_numeros == 0 and cantidad_simbolos == 0:
+        formato = "Básico"
+
+    else:
+        formato = "SIN CATEGORIA" #para que no rompa el programa nunca
+
+    return formato
