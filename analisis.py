@@ -133,11 +133,37 @@ def calcular_porcentaje(cantidad: int, total: int) -> float:
     porcentaje = (cantidad / total) * 100
     return porcentaje
 
-#------------------------
-# 8)Ordenar caracteres de la contraseña 
-#Utilizo un algoritmo de ordenamiento manual por comparación e intercambio de elementos.  (Selection Sort)
-#comparo con todo a la derecha o izquierda
+#-----------------------
+#7 Verificar si el usuario es simétrico 
+def verificar_simetria(cadena: str) -> bool:
+    """Verifica si la primera mitad de la cadena es idéntica a la segunda mitad.
 
+    Args:
+        cadena (str): Nombre de usuario a analizar.
+
+    Returns:
+        bool: True si es simétrico, False si no lo es o si su longitud es impar.
+    """
+    longitud = calcular_longitud(cadena) #REUTILIZO
+    
+    if longitud % 2 != 0: # Si la longitud es impar, no puede dividirse en dos mitades iguales
+        es_simetrico = False
+
+    else:        
+        mitad = longitud // 2 # Calculamos el punto medio exacto (usamos // para obtener un entero) 
+        es_simetrico = True         
+        
+        for i in range(mitad): # Recorremos solo la primera mitad
+            
+            if cadena[i] != cadena[i + mitad]: # Comparo la posición de la primera mitad con su equivalente en la segunda mitad
+                es_simetrico = False # Si una sola letra no coincide, ya no es simétrico
+                break
+    return es_simetrico
+
+#------------------------
+# 8)Ordenar caracteres del usuario
+#Utilizo un algoritmo de ordenamiento manual por comparación e intercambio de elementos.  (Selection Sort)
+#Comparo con todo a la derecha o izquierda
 def ordenar_usuario(cadena: str, orden: str) -> str:
     """Ordena los caracteres de un usuario de forma ascendente o descendente
     utilizando un algoritmo de ordenamiento manual basado en comparación ASCII.
@@ -170,3 +196,4 @@ def ordenar_usuario(cadena: str, orden: str) -> str:
         resultado += lista[i] 
 
     return resultado
+
